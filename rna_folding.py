@@ -50,8 +50,3 @@ def rna_folding(rna_seq, N):
 
     # Print Output
     util.print_output(S, rna_seq, parenthesis, N)
-
-
-# Example usage
-seq = "GCCGAGCG"
-rna_folding(seq, len(seq))

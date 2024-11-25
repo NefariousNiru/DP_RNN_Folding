@@ -38,6 +38,8 @@ def traceback(i, j, trace, parenthesis):
         traceback(i + 1, j - 1, trace, parenthesis)
     elif action[0] == 'SKIP_J':
         traceback(i, j - 1, trace, parenthesis)
+    elif action[0] == "SKIP_I":
+        traceback(i + 1 , j, trace, parenthesis)
     elif action[0] == 'BIFURCATE':
         _, k = action
         traceback(i, k, trace, parenthesis)

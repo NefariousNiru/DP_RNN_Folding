@@ -8,8 +8,18 @@ def rna_folding(rna_seq, N):
     for length in range(4, N + 1):  # Minimum distance is 4
         for i in range(N - length + 1):
             j = i + length - 1
+
+            # During the loop if distance is less than 4 skip
+            if abs(i - j) < 4:
+                trace[i][j] = ('SKIP_I', i)
+                continue
+
             max_score = S[i][j - 1]  # Case where j is unpaired
             trace[i][j] = ('SKIP_J', j)
+
+            if max_score < S[i + 1][j]:
+                max_score = S[i + 1][j]# case where i is unpaired
+                trace[i][j] = ('SKIP_I', i)
 
             # Check if i and j can pair
             pair_score = util.get_pair_score(rna_seq[i], rna_seq[j])
@@ -43,4 +53,5 @@ def rna_folding(rna_seq, N):
 
 
 # Example usage
-rna_folding("ACCUCUGG", len("ACCUCUGG"))
+seq = "GCCGAGCG"
+rna_folding(seq, len(seq))

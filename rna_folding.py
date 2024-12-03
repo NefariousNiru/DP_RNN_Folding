@@ -10,7 +10,7 @@ def rna_folding(rna_seq, N):
             j = i + length - 1
 
             # During the loop if distance is less than 4 skip
-            if abs(i - j) < 4:
+            if abs(i - j) <= 4:
                 trace[i][j] = ('SKIP_I', i)
                 continue
 
